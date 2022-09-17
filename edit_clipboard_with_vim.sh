@@ -1,5 +1,5 @@
 #!/bin/bash
-terminal_cmd="gnome-terminal --wait"
+terminal_cmd="terminator"
 path_prefix="/tmp/vim_clip_edit_"
 if compgen -G "$path_prefix*" > /dev/null; then
     rm $tmp_file
@@ -9,6 +9,6 @@ fi
 now=$(date +%s)
 tmp_file="$path_prefix$now.txt"
 xclip -o > $tmp_file 
-$terminal_cmd -- vim $tmp_file
+$terminal_cmd -e "vim $tmp_file"
 cat $tmp_file | xclip -i
 rm $tmp_file
